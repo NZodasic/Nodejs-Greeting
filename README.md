@@ -1,3 +1,4 @@
->>npm install | cooki-parser | express | ejs | nodemon
+>>npm install -g express ejs
+>>npm install --save-dev nodemon
 
 >> nodemon
