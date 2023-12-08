@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeting Application</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin&family=Nova+Square&family=Orbitron&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="greeting">
+      <h1>Birthday Application</h1>
+    </div>
+  </header>
+  <form class="greeting-form" action="/find" method="POST">
+    <div class="name">
+      <h3>Your Name</h3>
+      <input type="text" name="name" class="name-input" placeholder="Enter your full-name">
+    </div>
+    <div class="dmy">
+      <h3>Date of birth</h3>
+      <input type="number" class="day" name="day" min="1" max="31">
+      <input type="number" class="month" name="month" min="1" max="12">
+      <input type="number" class="year" name="year" max="2023">
+    </div>
+    <div class="submit-clear">
+      <button class="submit">Submit</button>
+      <button class="clear" onclick="Reset(),showTime()">Clear</button>
+    </div>
+  </form>
+
+
+  <div class="result">
+    <h2 id="displayDateTime"></h2>
+    <p>Hello <%= fname %>. Sinh nhật của bạn là <%= fday %>/<%= fmonth %>/<%= fyear %> </p>
+    <p>Số ngày còn lại tính tới ngày sinh nhật của bạn nè: <%= remainingDays %></p>
+
+  </div>
+
+
+
+</body>
+<script>
+  function Reset() {
+    document.querySelector(".name").value = "";
+    document.querySelector(".day").value = "";
+    document.querySelector(".month").value = "";
+    document.querySelector(".year").value = "";
+
+  }
+
+  function gettime() {
+    var date = new Date();
+    var hour = date.getHours(); // 0 - 23
+    var minute = date.getMinutes(); // 0 - 59
+    var second = date.getSeconds(); // 0 - 59
+    if (hour < 12) {
+      return 'Morning';
+    }
+    else if (hour >= 12 && hour <= 17) {
+      return 'Afternoon';
+    }
+    else if (hour >= 17 && hour <= 24) {
+      return 'Evening';
+    }
+  }
+  const displayDateTime = document.getElementById('displayDateTime');
+  displayDateTime.textContent = `Good ${gettime()}`;
+
+
+</script>
+
+</html>
+
+
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'M PLUS Code Latin', sans-serif;
+  }
+  .greeting {
+    display: flex;
+    justify-content: center;
+  }
+
+  .greeting-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px black solid;
+  }
+
+  .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .name-input {
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  .name-input:hover{
+    border: 1px solid #000;
+  }
+
+  .dmy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 2rem;
+  }
+
+  .day {
+    width: 30%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .month {
+    width: 30%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .year {
+    width: 30%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  .submit-clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 2rem;
+  }
+
+  .submit-clear button {
+    padding: 0.5rem 3rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .result {
+    width: 50%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px black solid;
+    transition: all 1s ease-in-out;
+  }
+  .result:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  }
+</style>
